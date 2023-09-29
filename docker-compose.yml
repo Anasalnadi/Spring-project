@@ -1,0 +1,18 @@
+version: '1'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: your-postgres-container
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: user
+      POSTGRES_DB: your-database
+  app:
+    build:
+      context: .
+    image: spring-project
+    container_name: spring
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
